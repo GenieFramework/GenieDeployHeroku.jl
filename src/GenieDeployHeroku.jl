@@ -10,7 +10,7 @@ const HEROKU = @static Sys.iswindows() ? `heroku.cmd` : `heroku`
 Returns list of apps available on Heroku account.
 """
 function apps()
-  `$HEROKU apps` |> Genie.Deploy.run
+  `$HEROKU apps` |> GenieDeploy.run
 end
 
 """
@@ -20,7 +20,7 @@ Runs the `heroku create` command to create a new app in the indicated region.
 See https://devcenter.heroku.com/articles/heroku-cli-commands#heroku-apps-create-app
 """
 function createapp(appname::String; region::String = "us")
-  `$HEROKU create $(appname) --region $region` |> Genie.Deploy.run
+  `$HEROKU create $(appname) --region $region` |> GenieDeploy.run
 end
 
 
@@ -31,7 +31,7 @@ Invokes the `heroku container:push` which builds, then pushes Docker images to d
 See https://devcenter.heroku.com/articles/heroku-cli-commands#heroku-container-push
 """
 function push(appname::String; apptype::String = "web")
-  `$HEROKU container:push $apptype -a $appname` |> Genie.Deploy.run
+  `$HEROKU container:push $apptype -a $appname` |> GenieDeploy.run
 end
 
 
@@ -42,7 +42,7 @@ Invokes the `keroku container:release` which releases previously pushed Docker i
 See https://devcenter.heroku.com/articles/heroku-cli-commands#heroku-container-push
 """
 function release(appname::String; apptype::String = "web")
-  `$HEROKU container:release $apptype -a $appname` |> Genie.Deploy.run
+  `$HEROKU container:release $apptype -a $appname` |> GenieDeploy.run
 end
 
 
@@ -53,7 +53,7 @@ Invokes the `heroku open` command which open the app in a web browser.
 See https://devcenter.heroku.com/articles/heroku-cli-commands#heroku-apps-open-path
 """
 function open(appname::String)
-  `$HEROKU open -a $appname` |> Genie.Deploy.run
+  `$HEROKU open -a $appname` |> GenieDeploy.run
 end
 
 
@@ -64,7 +64,7 @@ Invokes the `heroku container:login` to log in to Heroku Container Registry,
 See https://devcenter.heroku.com/articles/heroku-cli-commands#heroku-container-login
 """
 function login()
-  `$HEROKU container:login` |> Genie.Deploy.run
+  `$HEROKU container:login` |> GenieDeploy.run
 end
 
 
@@ -75,7 +75,7 @@ Display recent heroku log output.
 https://devcenter.heroku.com/articles/heroku-cli-commands#heroku-logs
 """
 function logs(appname::String; lines::Int = 1_000)
-  `$HEROKU logs --tail -a $appname -n $lines` |> Genie.Deploy.run
+  `$HEROKU logs --tail -a $appname -n $lines` |> GenieDeploy.run
 end
 
 end
