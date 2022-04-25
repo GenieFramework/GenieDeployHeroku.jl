@@ -1,6 +1,7 @@
 module GenieDeployHeroku
 
 import Genie
+import GenieDeploy
 
 const HEROKU = @static Sys.iswindows() ? `heroku.cmd` : `heroku`
 
