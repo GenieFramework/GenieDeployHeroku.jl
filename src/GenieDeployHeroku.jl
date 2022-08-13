@@ -97,10 +97,11 @@ end
 """
     login()
 
-Invokes the `heroku container:login` to log in to Heroku Container Registry,
+Invokes the `heroku login` and the `heroku container:login` to log in to Heroku and the Heroku Container Registry.
 See https://devcenter.heroku.com/articles/heroku-cli-commands#heroku-container-login
 """
 function login() :: Nothing
+  `$HEROKU login` |> GenieDeploy.run
   `$HEROKU container:login` |> GenieDeploy.run
 
   nothing
